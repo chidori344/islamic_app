@@ -19,7 +19,17 @@ primaryColor: primarylight,
        fontWeight: FontWeight.w700,
        color: blackColor
 
-     )
+     ),
+         titleMedium: TextStyle(
+       fontSize: 25,
+       fontWeight: FontWeight.w600,
+       color: blackColor
+   ),
+     titleSmall: TextStyle(
+         fontSize: 35,
+         fontWeight: FontWeight.w400,
+         color: blackColor
+     ),
    ),
    bottomNavigationBarTheme: BottomNavigationBarThemeData(
      selectedItemColor: blackColor,

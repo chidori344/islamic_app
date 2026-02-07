@@ -1,10 +1,10 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
-import 'package:islamic_app/Home_Screen/quran/hadeth%20tap.dart';
+import 'package:islamic_app/Home_Screen/hadeth/hadeth%20tap.dart';
 import 'package:islamic_app/Home_Screen/quran/quran%20tap.dart';
-import 'package:islamic_app/Home_Screen/quran/radio%20tap.dart';
-import 'package:islamic_app/Home_Screen/quran/sebhatap.dart';
+import 'package:islamic_app/Home_Screen/radio/radio%20tap.dart';
+import 'package:islamic_app/Home_Screen/sebha/sebhatap.dart';
 
 class HomeScreen extends StatefulWidget {
 static const String routName = "home screen";
