@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:islamic_app/Home_Screen/quran/Item_sura_name.dart';
+import 'package:islamic_app/l10n/app_localizations.dart';
 
 class QuranTab extends StatelessWidget {
   List<String> names = [
@@ -122,35 +123,33 @@ class QuranTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          Expanded(
-            flex: 1,
-              child:
-              Image.asset("islami_app_assets/images/qur2an_screen_logo.png")
-          ),
-          Divider(color: Theme.of(context).primaryColor, thickness: 3),
-          Text("sura name", style: Theme.of(context).textTheme.titleMedium),
-          Divider(color: Theme.of(context).primaryColor, thickness: 3),
-          Expanded(
-            flex: 3,
-            child: ListView.separated(
-              separatorBuilder:(context, index) {
-                return Divider(
-                    color: Theme.of(context).primaryColor,
-                    thickness: 1
-                );
+    return Column(
+      children: [
+        Expanded(
+          flex: 1,
+            child:
+            Center(child: Image.asset("islami_app_assets/images/qur2an_screen_logo.png"))
+        ),
+        Divider(color: Theme.of(context).primaryColor, thickness: 3),
+        Text( AppLocalizations.of(context)!.sura_name, style: Theme.of(context).textTheme.titleMedium),
+        Divider(color: Theme.of(context).primaryColor, thickness: 3),
+        Expanded(
+          flex: 3,
+          child: ListView.separated(
+            separatorBuilder:(context, index) {
+              return Divider(
+                  color: Theme.of(context).primaryColor,
+                  thickness: 1
+              );
 
+            },
+              itemBuilder: (context,index){
+                return ItemSuraName(name: names[index],index: index);
               },
-                itemBuilder: (context,index){
-                  return ItemSuraName(name: names[index],index: index);
-                },
-              itemCount: names.length,
-            ),
-          )
-        ],
-      ),
+            itemCount: names.length,
+          ),
+        )
+      ],
     );
   }
 }

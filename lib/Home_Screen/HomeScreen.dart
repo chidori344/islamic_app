@@ -5,6 +5,9 @@ import 'package:islamic_app/Home_Screen/hadeth/hadeth%20tap.dart';
 import 'package:islamic_app/Home_Screen/quran/quran%20tap.dart';
 import 'package:islamic_app/Home_Screen/radio/radio%20tap.dart';
 import 'package:islamic_app/Home_Screen/sebha/sebhatap.dart';
+import 'package:islamic_app/Home_Screen/settings/setting%20tap.dart';
+
+import '../l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
 static const String routName = "home screen";
@@ -28,7 +31,7 @@ int selectedindex=0;
         Scaffold(
           appBar: AppBar(
              centerTitle: true,
-            title: Text('Islami',
+            title: Text(AppLocalizations.of(context)!.app_title,
             style: Theme.of(context).textTheme.titleLarge,
             )
           ),
@@ -48,19 +51,22 @@ int selectedindex=0;
                 items:[
                   BottomNavigationBarItem(
                       icon: ImageIcon(AssetImage("islami_app_assets/images/icon_quran.png")),
-                    label: "Quran"
+                    label: AppLocalizations.of(context)!.quran
                   ),
                   BottomNavigationBarItem(
                       icon: ImageIcon(AssetImage("islami_app_assets/images/icon_hadeth.png")),
-                    label: "Hadeth"
+                    label: AppLocalizations.of(context)!.hadeth
                   ),
 
                   BottomNavigationBarItem(
                       icon: ImageIcon(AssetImage("islami_app_assets/images/icon_sebha.png")),
-                    label: "sebha"
+                    label: AppLocalizations.of(context)!.sebha
                   ), BottomNavigationBarItem(
                       icon: ImageIcon(AssetImage("islami_app_assets/images/icon_radio.png")),
-                      label: "Radio"
+                      label: AppLocalizations.of(context)!.radio
+                  ),BottomNavigationBarItem(
+                      icon: Icon(Icons.settings),
+                      label: AppLocalizations.of(context)!.settings
                   ),
                 ]
                 ),
@@ -74,6 +80,8 @@ int selectedindex=0;
 
   }
 List<Widget> tabs =[
-  QuranTab(), HadethTab(), SebhaTab(), RadioTab()
+  QuranTab(), HadethTab(), SebhaTab(), RadioTab(), SettingTab()
 ];
+
+
 }
