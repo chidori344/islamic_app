@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islamic_app/Home_Screen/provider/app_config_provider.dart';
 import 'package:islamic_app/Home_Screen/quran/Item_sura_details.dart';
 import 'package:islamic_app/Home_Screen/quran/Item_sura_name.dart';
+import 'package:provider/provider.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   static const String routName = "sura Details Screen";
@@ -17,17 +19,23 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as suraDetailsArgs;
+    var provider = Provider.of<AppConfigProvider>(context);
 if (verses.isEmpty){
   LoadFiles(args.index);
 }
 
     return Stack(
       children: [
-      Image.asset('islami_app_assets/images/main_background.png',
-      width: double.infinity,
-      height: double.infinity,
-      fit: BoxFit.fill,
-    ),
+        provider.isDarkMode()?
+        Image.asset('islami_app_assets/images/dark_bg.png',
+          width: double.infinity,
+          height: double.infinity,
+          fit: BoxFit.fill,
+        ):Image.asset('islami_app_assets/images/main_background.png',
+          width: double.infinity,
+          height: double.infinity,
+          fit: BoxFit.fill,
+        ),
     Scaffold(
     appBar: AppBar(
     centerTitle: true,

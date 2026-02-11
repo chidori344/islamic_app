@@ -18,6 +18,10 @@ class AppConfigProvider extends ChangeNotifier{
      AppTheme = newMode;
      notifyListeners();
      }
+     bool isDarkMode() {
+      return AppTheme==ThemeMode.dark;
+     }
+     notifyListeners();
    }
 
 

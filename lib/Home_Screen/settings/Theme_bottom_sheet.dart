@@ -1,40 +1,42 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:islamic_app/Home_Screen/my_theme.dart';
 import 'package:islamic_app/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+import '../my_theme.dart';
+
 
 import '../provider/app_config_provider.dart';
 
-class LanguageBottomSheet extends StatefulWidget {
+class ThemeBottomSheet extends StatefulWidget {
 
   @override
-  State<LanguageBottomSheet> createState() => _LanguageBottomSheetState();
+  State<ThemeBottomSheet> createState() => _ThemeBottomSheetState();
 }
 
-class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
+class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<AppConfigProvider>(context);
 
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        /// Dark mode
         InkWell(
           onTap: () {
-            provider.ChangeLanguage("en");
+            provider.ChangeTheme(ThemeMode.dark);
 
           },
-          child: provider.AppLanguage=="en"?
-          getSelectedItemWiedget(AppLocalizations.of(context)!.english):
-          getUnSelectedItemWiedget(AppLocalizations.of(context)!.english),
+          child: provider.isDarkMode()?
+          getSelectedItemWiedget(AppLocalizations.of(context)!.dark):
+          getUnSelectedItemWiedget(AppLocalizations.of(context)!.dark),
         ),
         InkWell(
           onTap: () {
-          provider.ChangeLanguage("ar");
+          provider.ChangeTheme(ThemeMode.light);
           },
-          child: provider.AppLanguage=="ar"?
-          getSelectedItemWiedget(AppLocalizations.of(context)!.arbic):
-          getUnSelectedItemWiedget(AppLocalizations.of(context)!.arbic)
+          child: provider.isDarkMode() ?
+          getUnSelectedItemWiedget(AppLocalizations.of(context)!.light):
+          getSelectedItemWiedget(AppLocalizations.of(context)!.light)
           ,
         ),
       ]
@@ -50,17 +52,14 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(text,
-            style:
-            Theme.of(context).textTheme.titleMedium!.copyWith(
-                color: provider.isDarkMode()?
-                Theme.of(context).primaryColor
-                    :
-                MyTheme.primarylight
-            ),
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                color:  provider.isDarkMode()?
+            Theme.of(context).primaryColor
+                :
+            MyTheme.primarylight
+      ),
           ),
-          Icon(Icons.check,
-              color:
-              Theme.of(context).primaryColor)
+          Icon(Icons.check,color: Theme.of(context).primaryColor)
         ],
       ),
 
@@ -69,15 +68,17 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
   Widget getUnSelectedItemWiedget(String text) {
     var provider = Provider.of<AppConfigProvider>(context);
 
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Text(text,
           style: Theme.of(context).textTheme.titleMedium!.copyWith(
             color: provider.isDarkMode()?
-            MyTheme.primaryDark
+            Theme.of(context).primaryColor
                 :
             MyTheme.primarylight
-          )),
+          )
+          ),
     );
   }
 }

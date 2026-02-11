@@ -2,10 +2,12 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 import 'package:islamic_app/Home_Screen/hadeth/hadeth%20tap.dart';
+import 'package:islamic_app/Home_Screen/provider/app_config_provider.dart';
 import 'package:islamic_app/Home_Screen/quran/quran%20tap.dart';
 import 'package:islamic_app/Home_Screen/radio/radio%20tap.dart';
 import 'package:islamic_app/Home_Screen/sebha/sebhatap.dart';
 import 'package:islamic_app/Home_Screen/settings/setting%20tap.dart';
+import 'package:provider/provider.dart';
 
 import '../l10n/app_localizations.dart';
 
@@ -21,11 +23,17 @@ int selectedindex=0;
 
 @override
   Widget build(BuildContext context) {
+  var provider = Provider.of<AppConfigProvider>(context);
     return Stack(
       children: [
-        Image.asset('islami_app_assets/images/main_background.png',
+        provider.isDarkMode()?
+        Image.asset('islami_app_assets/images/dark_bg.png',
         width: double.infinity,
         height: double.infinity,
+          fit: BoxFit.fill,
+        ):Image.asset('islami_app_assets/images/main_background.png',
+          width: double.infinity,
+          height: double.infinity,
           fit: BoxFit.fill,
         ),
         Scaffold(
