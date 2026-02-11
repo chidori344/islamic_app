@@ -5,6 +5,7 @@ class MyTheme{
 static Color blackColor = Color(0xff242424);
 static Color primarylight = Color(0xffB7935F);
 static Color primaryDark = Color(0xff141A2E);
+static Color YellowColor = Color(0xffFACC1D);
 static Color whiteColor = Colors.white;
 
  static ThemeData LightTheme = ThemeData(
@@ -13,6 +14,9 @@ primaryColor: primarylight,
    appBarTheme: AppBarTheme(
      backgroundColor: Colors.transparent,
      centerTitle: true,
+     iconTheme: IconThemeData(
+       color: blackColor
+     ),
    ),
    textTheme:TextTheme(
      titleLarge: TextStyle(
@@ -39,33 +43,37 @@ primaryColor: primarylight,
    )
 
  );
+ /////// Dark mode
  static ThemeData darkTheme = ThemeData(
 scaffoldBackgroundColor: Colors.transparent,
 primaryColor: primaryDark,
    appBarTheme: AppBarTheme(
      backgroundColor: Colors.transparent,
      centerTitle: true,
+     iconTheme: IconThemeData(
+       color: whiteColor
+     ),
    ),
    textTheme:TextTheme(
      titleLarge: TextStyle(
        fontSize: 30,
        fontWeight: FontWeight.w700,
-       color: blackColor
+       color: whiteColor
 
      ),
          titleMedium: TextStyle(
        fontSize: 25,
        fontWeight: FontWeight.w600,
-       color: blackColor
+       color: whiteColor
    ),
      titleSmall: TextStyle(
          fontSize: 35,
          fontWeight: FontWeight.w400,
-         color: blackColor
+         color: YellowColor
      ),
    ),
    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-     selectedItemColor: blackColor,
+     selectedItemColor: YellowColor,
      unselectedItemColor:whiteColor,
      showUnselectedLabels: true,
    )

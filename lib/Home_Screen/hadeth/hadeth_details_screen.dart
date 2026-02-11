@@ -4,7 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:islamic_app/Home_Screen/hadeth/Item_hadeth_details.dart';
 import 'package:islamic_app/Home_Screen/quran/Item_sura_details.dart';
 import 'package:islamic_app/Home_Screen/quran/Item_sura_name.dart';
+import 'package:provider/provider.dart';
 
+import '../provider/app_config_provider.dart';
 import 'hadeth tap.dart';
 
 class HadethDetailsScreen extends StatefulWidget {
@@ -21,15 +23,21 @@ class _HadethDetailsScreenState extends State<HadethDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)?.settings.arguments as Hadeth ;
+    var provider = Provider.of<AppConfigProvider>(context);
 
 
     return Stack(
       children: [
-      Image.asset('islami_app_assets/images/main_background.png',
-      width: double.infinity,
-      height: double.infinity,
-      fit: BoxFit.fill,
-    ),
+        provider.isDarkMode()?
+        Image.asset('islami_app_assets/images/dark_bg.png',
+          width: double.infinity,
+          height: double.infinity,
+          fit: BoxFit.fill,
+        ):Image.asset('islami_app_assets/images/main_background.png',
+          width: double.infinity,
+          height: double.infinity,
+          fit: BoxFit.fill,
+        ),
     Scaffold(
     appBar: AppBar(
     centerTitle: true,
